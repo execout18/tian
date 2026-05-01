@@ -84,6 +84,31 @@
   .opt-desc { font-size: 14px; color: var(--ink); opacity: 0.85; line-height: 1.45; }
   .opt-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--rust); margin-top: 8px; text-transform: uppercase; }
 
+  /* LOCKED-IN INFO BLOCK (no picks needed) */
+  .locked-block {
+    background: linear-gradient(135deg, var(--tiger-navy) 0%, #1a3654 100%);
+    color: var(--cream);
+    padding: 24px 24px;
+    box-shadow: 4px 4px 0 var(--tiger-orange);
+    position: relative;
+  }
+  .locked-stamp {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--tiger-orange);
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+  .locked-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.02em; margin-bottom: 6px; padding-right: 80px; }
+  .locked-desc { font-size: 14px; opacity: 0.9; line-height: 1.5; margin-bottom: 12px; }
+  .locked-features { display: flex; flex-wrap: wrap; gap: 8px; }
+  .locked-features span { background: rgba(245, 239, 224, 0.15); border: 1px solid rgba(245, 239, 224, 0.3); padding: 4px 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+
   .notes-box { width: 100%; background: #fff; border: 2px solid var(--cream-dark); padding: 16px; font-family: 'Playfair Display', serif; font-size: 15px; color: var(--ink); resize: vertical; min-height: 80px; box-shadow: 2px 2px 0 var(--shadow); }
   .notes-box:focus { outline: none; border-color: var(--tiger-orange); box-shadow: 4px 4px 0 var(--shadow); }
 
@@ -107,6 +132,8 @@
   .pick-line .badge.second { background: var(--silver); }
   .pick-line.second { color: var(--silver); font-weight: 400; font-size: 14px; margin-top: 4px; }
   .pick-line.empty { color: var(--rust); font-style: italic; font-weight: 400; }
+  .pick-line.locked { color: var(--tiger-navy); font-weight: 700; }
+  .pick-line.locked .badge.locked { background: var(--tiger-navy); }
 
   .copy-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
   .copy-btn { flex: 1; min-width: 140px; background: var(--tiger-navy); color: var(--cream); border: none; padding: 12px 16px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.05em; cursor: pointer; transition: background 0.2s; }
@@ -121,6 +148,7 @@
     .section-num { font-size: 44px; }
     .section-title { font-size: 26px; }
     .opt-name { font-size: 19px; }
+    .locked-name { font-size: 23px; padding-right: 70px; }
   }
 </style>
 </head>
@@ -142,7 +170,7 @@
   </header>
 
   <div class="intro">
-    Christian — your wedding's coming. Before that happens, we owe you one hell of a day. <strong>Pick what sounds best at each stop and I'll handle the rest.</strong> Reservations, logistics, the crew. You just show up.
+    Christian — your wedding's coming. Before that happens, the crew owes you one hell of a day. <strong>Pick what sounds best at each stop and I'll handle the rest.</strong> Reservations, logistics, the crew. You just show up.
   </div>
 
   <div class="how-to">
@@ -152,15 +180,16 @@
     <p>Tap the same card again to clear it. Hit <strong>Submit</strong> at the bottom and text me back the summary.</p>
   </div>
 
+  <!-- 01 PRE-GAME -->
   <section class="section">
     <div class="section-header">
       <div class="section-num">01</div>
       <div class="section-title-block">
         <div class="section-title">Pre-Game Brunch</div>
-        <div class="section-time">10:00 AM · Walk to Comerica</div>
+        <div class="section-time">10:00 AM · Walking distance to Comerica</div>
       </div>
     </div>
-    <p class="section-prompt">How do you want to kick the day off? Bottomless mimosas guaranteed either way.</p>
+    <p class="section-prompt">How do you want to kick the day off? Bottomless mimosas guaranteed wherever we land.</p>
     <button class="clear-link" data-clear="pregame">↺ Clear my picks</button>
     <div class="options" data-section="pregame">
       <div class="option" data-value="The Apparatus Room">
@@ -175,14 +204,21 @@
         <p class="opt-desc">Loud, packed, hash-brown-stack famous. Less polish, more party. Boozy brunch menu, big group tables, energy out the door.</p>
         <div class="opt-meta">~ 10 min walk to stadium</div>
       </div>
+      <div class="option" data-value="Haus of Brunch">
+        <div class="opt-name">Haus of Brunch</div>
+        <span class="opt-tag">Hotel Brunch</span><span class="opt-tag">Westin Book Cadillac</span>
+        <p class="opt-desc">Tucked inside the Book Cadillac. Famous for cowboy candied beef bacon and fluffy biscuits. Killer presentation. Heads up — they don't serve booze, so we'd BYO mimosa run before/after.</p>
+        <div class="opt-meta">~ 8 min walk to stadium</div>
+      </div>
       <div class="option" data-value="Surprise me">
         <div class="opt-name">"Surprise me, you got it"</div>
         <span class="opt-tag">Trust the Process</span>
-        <p class="opt-desc">You don't care, you trust me. I'll book whichever has better availability for 15 and call it.</p>
+        <p class="opt-desc">You don't care, you trust me. I'll book whichever has the best availability for 15 and call it.</p>
       </div>
     </div>
   </section>
 
+  <!-- 02 GAME -->
   <section class="section">
     <div class="section-header">
       <div class="section-num">02</div>
@@ -214,71 +250,77 @@
     </div>
   </section>
 
+  <!-- 03 POST-GAME (LOCKED IN) -->
   <section class="section">
     <div class="section-header">
       <div class="section-num">03</div>
       <div class="section-title-block">
-        <div class="section-title">Post-Game Play</div>
-        <div class="section-time">~4:30 PM · Punch Bowl Social</div>
+        <div class="section-title">Post-Game</div>
+        <div class="section-time">~4:30 PM · Walk from Comerica</div>
       </div>
     </div>
-    <p class="section-prompt">Bridge between game and dinner. Already locked in <strong>Punch Bowl Social</strong> as the spot — but how do you want to spend the time there?</p>
-    <button class="clear-link" data-clear="postgame">↺ Clear my picks</button>
-    <div class="options" data-section="postgame">
-      <div class="option" data-value="Bowling tournament">
-        <div class="opt-name">Bowling Tournament</div>
-        <span class="opt-tag orange">Competitive</span>
-        <p class="opt-desc">Reserve lanes, set up brackets, loser buys the next round. Easy to get 15 guys engaged. Trash-talk fuel.</p>
-      </div>
-      <div class="option" data-value="Karaoke room">
-        <div class="opt-name">Private Karaoke Room</div>
-        <span class="opt-tag">Chaos Mode</span>
-        <p class="opt-desc">Lock the crew in a private karaoke room. The kind of memory video that gets played at the wedding reception.</p>
-      </div>
-      <div class="option" data-value="Open floor">
-        <div class="opt-name">Just Open Floor</div>
-        <span class="opt-tag">Loose</span>
-        <p class="opt-desc">No reservation. Roll in, post up at the bar, hit the arcade, ping pong, whatever the energy calls for. Most flexible.</p>
-      </div>
-      <div class="option" data-value="All of the above">
-        <div class="opt-name">All of the Above</div>
-        <span class="opt-tag gold">Maximum Damage</span>
-        <p class="opt-desc">Bowling lanes + a karaoke hour + free roam in between. Most expensive option, biggest experience.</p>
+    <p class="section-prompt">Locked this one in already — perfect spot to bridge the gap between game and dinner. Right up the crew's alley.</p>
+    <div class="locked-block">
+      <div class="locked-stamp">LOCKED</div>
+      <div class="locked-name">Punch Bowl Social</div>
+      <div class="locked-desc">Walking distance from Comerica. Ping pong, full arcade, shuffleboard, ridiculous food, full bar. Plenty of room for 15 to spread out and stay loose. The crew can chase whatever activity hits and we don't have to commit to one thing.</div>
+      <div class="locked-features">
+        <span>Ping Pong</span>
+        <span>Arcade</span>
+        <span>Shuffleboard</span>
+        <span>Food + Bar</span>
       </div>
     </div>
   </section>
 
+  <!-- 04 DINNER -->
   <section class="section">
     <div class="section-header">
       <div class="section-num">04</div>
       <div class="section-title-block">
         <div class="section-title">The Dinner</div>
-        <div class="section-time">7:00 PM · Sullivan's Steakhouse</div>
+        <div class="section-time">7:00 PM · Private room for 15</div>
       </div>
     </div>
-    <p class="section-prompt">Sullivan's is locked. Private room for 15. What's your call on the menu format?</p>
+    <p class="section-prompt">Detroit has the best steakhouse lineup in the Midwest. Pick your spot — DK didn't want to choose for you, this one's yours.</p>
     <button class="clear-link" data-clear="dinner">↺ Clear my picks</button>
     <div class="options" data-section="dinner">
-      <div class="option" data-value="Family-style preset">
-        <div class="opt-name">Family-Style Preset Menu</div>
-        <span class="opt-tag gold">Smoothest</span>
-        <p class="opt-desc">Pre-selected steaks, sides, apps for the table. No menu fumbling. Easiest to split the check, fastest service. Your steak comes out hot.</p>
+      <div class="option" data-value="Sullivan's Steakhouse">
+        <div class="opt-name">Sullivan's Steakhouse</div>
+        <span class="opt-tag gold">Group Pro</span><span class="opt-tag">$$$</span>
+        <p class="opt-desc">Best private room game in town for groups of 15. Live music, smooth service, wagyu tomahawk on the menu. Hosts countless private dinners — they know how to handle a crew without missing a beat. Solid all-around.</p>
+        <div class="opt-meta">Washington Blvd · Best for groups</div>
       </div>
-      <div class="option" data-value="Order off menu">
-        <div class="opt-name">Everyone Orders Their Own</div>
-        <span class="opt-tag">Classic</span>
-        <p class="opt-desc">Full menu, everyone picks what they want. Slower, but no compromises. The guy who wants the lamb chops gets the lamb chops.</p>
+      <div class="option" data-value="Prime + Proper">
+        <div class="opt-name">Prime + Proper</div>
+        <span class="opt-tag gold">Modern Steakhouse</span><span class="opt-tag">$$$$</span>
+        <p class="opt-desc">Modern, dramatic, dry-aged steaks. The 40 oz tomahawk is the move. Chicken-fried lobster as an app is wild. Most Instagram-able room of the bunch. Pricier than Sullivan's, more of a flex.</p>
+        <div class="opt-meta">Griswold · The Statement Pick</div>
       </div>
-      <div class="option" data-value="Curated short list">
-        <div class="opt-name">"Just Order Me a Tomahawk"</div>
-        <span class="opt-tag orange">Big Move</span>
-        <p class="opt-desc">Curated short list — the best 4-5 cuts, top sides, the wine. Less fumbling than full menu, more freedom than family-style.</p>
+      <div class="option" data-value="London Chop House">
+        <div class="opt-name">London Chop House</div>
+        <span class="opt-tag gold">Detroit Legacy</span><span class="opt-tag">$$$$</span>
+        <p class="opt-desc">The original Detroit steakhouse. Open since 1938. Underground dining room, dark wood, leather booths, live jazz. Where the city's old guard cut deals. If you want the most "this is Detroit" dinner you can have, this is it.</p>
+        <div class="opt-meta">Congress St · Old-School Power Move</div>
+      </div>
+      <div class="option" data-value="Sexy Steak">
+        <div class="opt-name">Sexy Steak</div>
+        <span class="opt-tag orange">New + Loud</span><span class="opt-tag">$$$</span>
+        <p class="opt-desc">Newer spot, halal-friendly menu, live music, wild interior. The name alone makes it bachelor-appropriate. Filet, surf-and-turf, lamb chops all hit. More energy than the old-guard rooms.</p>
+        <div class="opt-meta">Grand River · The Vibe Pick</div>
+      </div>
+      <div class="option" data-value="Adelina (Wildcard)">
+        <div class="opt-name">Adelina <span style="color:var(--gold);">★ Wildcard</span></div>
+        <span class="opt-tag" style="background:var(--rust);color:#fff;">Italian</span><span class="opt-tag">$$$$</span>
+        <p class="opt-desc">If you're sick of steak — this is it. Hottest Italian room in Detroit right now. Pasta made in-house, lamb chops, scallops. 4.8 stars across 2,000+ reviews. Different energy from a steakhouse — feels celebratory without being a meathouse.</p>
+        <div class="opt-meta">Woodward · The Curveball</div>
       </div>
     </div>
   </section>
 
   <div class="star-divider">★ ★ ★</div>
 
+  <!-- 05 NIGHTCAP -->
   <section class="section">
     <div class="section-header">
       <div class="section-num">05</div>
@@ -318,6 +360,7 @@
     </div>
   </section>
 
+  <!-- 06 NOTES -->
   <section class="section">
     <div class="section-header">
       <div class="section-num">06</div>
@@ -355,7 +398,6 @@
   const state = {
     pregame: { first: null, backup: null },
     game: { first: null, backup: null },
-    postgame: { first: null, backup: null },
     dinner: { first: null, backup: null },
     nightcap: { first: null, backup: null }
   };
@@ -407,7 +449,6 @@
     const sections = [
       { key: 'pregame', label: 'Pre-Game' },
       { key: 'game', label: 'Game' },
-      { key: 'postgame', label: 'Post-Game' },
       { key: 'dinner', label: 'Dinner' },
       { key: 'nightcap', label: 'Nightcap' }
     ];
@@ -415,28 +456,20 @@
     let content = '';
     let textVersion = '★ BABY BASH BACHELOR DAY ★\n★ JUNE 6 · DETROIT ★\n\n';
 
-    sections.forEach(s => {
-      const first = state[s.key].first;
-      const backup = state[s.key].backup;
-      let picksHtml = '';
-      let picksText = '';
+    // Pre-game
+    sections.slice(0, 2).forEach(s => {
+      content += renderSummaryRow(s);
+      textVersion += renderTextRow(s);
+    });
 
-      if (!first && !backup) {
-        picksHtml = `<div class="pick-line empty">— Bash didn't pick — DK's call —</div>`;
-        picksText = `(no pick — DK's call)`;
-      } else {
-        if (first) {
-          picksHtml += `<div class="pick-line"><span class="badge first">1ST</span>${first}</div>`;
-          picksText += `1st: ${first}`;
-        }
-        if (backup) {
-          picksHtml += `<div class="pick-line second"><span class="badge second">2ND</span>${backup}</div>`;
-          picksText += (picksText ? ` / 2nd: ${backup}` : `2nd: ${backup}`);
-        }
-      }
+    // Locked Post-Game
+    content += `<div class="summary-row"><div class="summary-label">Post-Game</div><div class="summary-picks"><div class="pick-line locked"><span class="badge locked">LOCKED</span>Punch Bowl Social</div></div></div>`;
+    textVersion += `POST-GAME\n  LOCKED: Punch Bowl Social (ping pong / arcade / bar)\n\n`;
 
-      content += `<div class="summary-row"><div class="summary-label">${s.label}</div><div class="summary-picks">${picksHtml}</div></div>`;
-      textVersion += `${s.label.toUpperCase()}\n  ${picksText}\n\n`;
+    // Dinner + Nightcap
+    sections.slice(2).forEach(s => {
+      content += renderSummaryRow(s);
+      textVersion += renderTextRow(s);
     });
 
     const notes = document.getElementById('notes').value.trim();
@@ -451,6 +484,33 @@
     const summary = document.getElementById('summary');
     summary.classList.add('show');
     summary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function renderSummaryRow(s) {
+    const first = state[s.key].first;
+    const backup = state[s.key].backup;
+    let picksHtml = '';
+
+    if (!first && !backup) {
+      picksHtml = `<div class="pick-line empty">— Bash didn't pick — DK's call —</div>`;
+    } else {
+      if (first) picksHtml += `<div class="pick-line"><span class="badge first">1ST</span>${first}</div>`;
+      if (backup) picksHtml += `<div class="pick-line second"><span class="badge second">2ND</span>${backup}</div>`;
+    }
+    return `<div class="summary-row"><div class="summary-label">${s.label}</div><div class="summary-picks">${picksHtml}</div></div>`;
+  }
+
+  function renderTextRow(s) {
+    const first = state[s.key].first;
+    const backup = state[s.key].backup;
+    let picksText = '';
+    if (!first && !backup) {
+      picksText = `(no pick — DK's call)`;
+    } else {
+      if (first) picksText += `1st: ${first}`;
+      if (backup) picksText += (picksText ? ` / 2nd: ${backup}` : `2nd: ${backup}`);
+    }
+    return `${s.label.toUpperCase()}\n  ${picksText}\n\n`;
   }
 
   function copyToClipboard() {
