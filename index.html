@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Bash's Bachelor Day — June 6 · Detroit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tiger-orange: #FA4616;
+    --tiger-navy: #0C2340;
+    --cream: #F5EFE0;
+    --cream-dark: #E8DFC9;
+    --ink: #1a1a1a;
+    --rust: #8B3A1F;
+    --gold: #C9A24A;
+    --silver: #8a8a8a;
+    --shadow: rgba(12, 35, 64, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Playfair Display', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.5;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(250, 70, 22, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(12, 35, 64, 0.05) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  .header { text-align: center; padding: 24px 0 36px; border-bottom: 3px double var(--tiger-navy); margin-bottom: 40px; }
+  .ticket-stub { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--tiger-navy); background: var(--cream-dark); padding: 6px 16px; border: 1px solid var(--tiger-navy); margin-bottom: 20px; text-transform: uppercase; font-weight: 600; }
+  .pretitle { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.4em; color: var(--rust); margin-bottom: 8px; }
+  .title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 13vw, 110px); line-height: 0.9; color: var(--tiger-navy); letter-spacing: 0.01em; margin-bottom: 4px; }
+  .title .orange { color: var(--tiger-orange); }
+  .title-sub { font-family: 'Bebas Neue', sans-serif; font-size: clamp(20px, 4vw, 28px); color: var(--tiger-navy); letter-spacing: 0.15em; margin-bottom: 16px; }
+  .subtitle { font-style: italic; font-size: 16px; color: var(--rust); margin-bottom: 16px; }
+  .meta-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--tiger-navy); text-transform: uppercase; margin-top: 12px; }
+  .meta-row span { padding: 0 8px; }
+  .meta-row span:not(:last-child) { border-right: 1px solid var(--tiger-navy); }
+
+  .intro { background: var(--cream-dark); border-left: 4px solid var(--tiger-orange); padding: 20px 24px; margin-bottom: 32px; font-size: 16px; font-style: italic; color: var(--ink); }
+  .intro strong { font-style: normal; color: var(--tiger-navy); }
+
+  .how-to { background: #fff; border: 2px dashed var(--tiger-navy); padding: 16px 20px; margin-bottom: 48px; font-size: 14px; }
+  .how-to-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--tiger-orange); letter-spacing: 0.05em; margin-bottom: 8px; }
+  .how-to p { margin-bottom: 6px; }
+  .how-to p:last-child { margin-bottom: 0; }
+  .badge-inline { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 11px; padding: 2px 8px; letter-spacing: 0.1em; color: #fff; margin: 0 2px; vertical-align: 1px; border-radius: 2px; }
+  .badge-inline.orange { background: var(--tiger-orange); }
+  .badge-inline.silver { background: var(--silver); }
+
+  .section { margin-bottom: 48px; }
+  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; border-bottom: 2px solid var(--tiger-navy); padding-bottom: 8px; }
+  .section-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--tiger-orange); line-height: 1; }
+  .section-title-block { flex: 1; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--tiger-navy); line-height: 1; letter-spacing: 0.02em; }
+  .section-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--rust); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
+  .section-prompt { font-style: italic; color: var(--ink); margin: 16px 0 12px; font-size: 15px; opacity: 0.85; }
+
+  .clear-link { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--rust); text-transform: uppercase; cursor: pointer; background: none; border: none; padding: 0; margin-bottom: 12px; text-decoration: underline; }
+  .clear-link:hover { color: var(--tiger-orange); }
+
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option { cursor: pointer; background: #fff; border: 2px solid var(--cream-dark); padding: 18px 20px; transition: all 0.15s ease; position: relative; box-shadow: 2px 2px 0 var(--shadow); user-select: none; }
+  .option:hover { border-color: var(--tiger-navy); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--shadow); }
+  .option.first-pick { border-color: var(--tiger-orange); box-shadow: 4px 4px 0 var(--tiger-orange); }
+  .option.first-pick::after { content: '1ST'; position: absolute; top: 12px; right: 12px; background: var(--tiger-orange); color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 2px; }
+  .option.backup-pick { border-color: var(--silver); box-shadow: 4px 4px 0 var(--silver); }
+  .option.backup-pick::after { content: '2ND'; position: absolute; top: 12px; right: 12px; background: var(--silver); color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 2px; }
+
+  .opt-name { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--tiger-navy); letter-spacing: 0.01em; line-height: 1.1; margin-bottom: 4px; padding-right: 50px; }
+  .opt-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; background: var(--tiger-navy); color: var(--cream); padding: 2px 8px; margin-bottom: 8px; margin-right: 6px; }
+  .opt-tag.gold { background: var(--gold); color: var(--ink); }
+  .opt-tag.orange { background: var(--tiger-orange); color: #fff; }
+  .opt-desc { font-size: 14px; color: var(--ink); opacity: 0.85; line-height: 1.45; }
+  .opt-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--rust); margin-top: 8px; text-transform: uppercase; }
+
+  .notes-box { width: 100%; background: #fff; border: 2px solid var(--cream-dark); padding: 16px; font-family: 'Playfair Display', serif; font-size: 15px; color: var(--ink); resize: vertical; min-height: 80px; box-shadow: 2px 2px 0 var(--shadow); }
+  .notes-box:focus { outline: none; border-color: var(--tiger-orange); box-shadow: 4px 4px 0 var(--shadow); }
+
+  .submit-section { margin-top: 56px; padding: 32px 24px; background: var(--tiger-navy); color: var(--cream); text-align: center; box-shadow: 6px 6px 0 var(--tiger-orange); }
+  .submit-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 8px; letter-spacing: 0.02em; }
+  .submit-section p { font-style: italic; margin-bottom: 24px; opacity: 0.85; }
+  .submit-btn { background: var(--tiger-orange); color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.05em; padding: 16px 40px; border: none; cursor: pointer; transition: all 0.15s ease; box-shadow: 3px 3px 0 var(--cream); }
+  .submit-btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--cream); }
+  .submit-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--cream); }
+
+  .summary { display: none; background: #fff; border: 2px solid var(--tiger-navy); padding: 32px; margin-top: 32px; box-shadow: 6px 6px 0 var(--tiger-navy); }
+  .summary.show { display: block; }
+  .summary h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--tiger-orange); margin-bottom: 16px; letter-spacing: 0.02em; border-bottom: 2px dashed var(--cream-dark); padding-bottom: 12px; }
+  .summary-row { display: flex; padding: 12px 0; border-bottom: 1px dotted var(--cream-dark); font-size: 14px; flex-wrap: wrap; gap: 8px; }
+  .summary-row:last-of-type { border-bottom: none; }
+  .summary-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); width: 110px; flex-shrink: 0; padding-top: 2px; }
+  .summary-picks { flex: 1; min-width: 200px; }
+  .pick-line { color: var(--tiger-navy); font-weight: 700; font-size: 15px; line-height: 1.4; }
+  .pick-line .badge { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 10px; letter-spacing: 0.1em; padding: 2px 6px; margin-right: 6px; color: #fff; border-radius: 2px; vertical-align: 1px; }
+  .pick-line .badge.first { background: var(--tiger-orange); }
+  .pick-line .badge.second { background: var(--silver); }
+  .pick-line.second { color: var(--silver); font-weight: 400; font-size: 14px; margin-top: 4px; }
+  .pick-line.empty { color: var(--rust); font-style: italic; font-weight: 400; }
+
+  .copy-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .copy-btn { flex: 1; min-width: 140px; background: var(--tiger-navy); color: var(--cream); border: none; padding: 12px 16px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.05em; cursor: pointer; transition: background 0.2s; }
+  .copy-btn:hover { background: var(--rust); }
+  .copy-btn.copied { background: var(--gold); color: var(--ink); }
+
+  .footer { text-align: center; margin-top: 56px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--rust); text-transform: uppercase; opacity: 0.6; }
+  .star-divider { text-align: center; color: var(--tiger-orange); margin: 40px 0; font-size: 20px; letter-spacing: 1em; }
+
+  @media (max-width: 480px) {
+    .container { padding: 20px 16px 60px; }
+    .section-num { font-size: 44px; }
+    .section-title { font-size: 26px; }
+    .opt-name { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="ticket-stub">★ Admit One · No. 0606 ★</div>
+    <div class="pretitle">A Bachelor Day For</div>
+    <h1 class="title"><span class="orange">Baby</span> Bash</h1>
+    <div class="title-sub">★ The Day Pass ★</div>
+    <p class="subtitle">Built by DK · Picked by you</p>
+    <div class="meta-row">
+      <span>Sat · Jun 6 · '26</span>
+      <span>Detroit · MI</span>
+      <span>1st Pitch · 1:10 PM</span>
+    </div>
+  </header>
+
+  <div class="intro">
+    Christian — your wedding's coming. Before that happens, we owe you one hell of a day. <strong>Pick what sounds best at each stop and I'll handle the rest.</strong> Reservations, logistics, the crew. You just show up.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-title">How This Works</div>
+    <p><strong>Tap once</strong> on your favorite to mark it <span class="badge-inline orange">1st</span> — that's your first choice.</p>
+    <p><strong>Tap a second card</strong> to mark it <span class="badge-inline silver">2nd</span> — your backup if the first one's booked or sold out.</p>
+    <p>Tap the same card again to clear it. Hit <strong>Submit</strong> at the bottom and text me back the summary.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title-block">
+        <div class="section-title">Pre-Game Brunch</div>
+        <div class="section-time">10:00 AM · Walk to Comerica</div>
+      </div>
+    </div>
+    <p class="section-prompt">How do you want to kick the day off? Bottomless mimosas guaranteed either way.</p>
+    <button class="clear-link" data-clear="pregame">↺ Clear my picks</button>
+    <div class="options" data-section="pregame">
+      <div class="option" data-value="The Apparatus Room">
+        <div class="opt-name">The Apparatus Room</div>
+        <span class="opt-tag gold">Refined</span><span class="opt-tag">Foundation Hotel</span>
+        <p class="opt-desc">Old fire-station-turned-elevated-brunch inside the Foundation Hotel. White tablecloth energy, killer Bloody Marys, the kind of room that makes you feel like a CEO before you've had your second drink.</p>
+        <div class="opt-meta">~ 8 min walk to stadium</div>
+      </div>
+      <div class="option" data-value="Dime Store">
+        <div class="opt-name">Dime Store</div>
+        <span class="opt-tag orange">Crew Vibe</span><span class="opt-tag">Capitol Park</span>
+        <p class="opt-desc">Loud, packed, hash-brown-stack famous. Less polish, more party. Boozy brunch menu, big group tables, energy out the door.</p>
+        <div class="opt-meta">~ 10 min walk to stadium</div>
+      </div>
+      <div class="option" data-value="Surprise me">
+        <div class="opt-name">"Surprise me, you got it"</div>
+        <span class="opt-tag">Trust the Process</span>
+        <p class="opt-desc">You don't care, you trust me. I'll book whichever has better availability for 15 and call it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title-block">
+        <div class="section-title">The Game</div>
+        <div class="section-time">1:10 PM · Tigers vs. Mariners</div>
+      </div>
+    </div>
+    <p class="section-prompt">Two ways to do the ballpark. Both are fun. One's a flex.</p>
+    <button class="clear-link" data-clear="game">↺ Clear my picks</button>
+    <div class="options" data-section="game">
+      <div class="option" data-value="Tiger Den All-Inclusive">
+        <div class="opt-name">Tiger Den All-Inclusive</div>
+        <span class="opt-tag gold">Premium</span><span class="opt-tag">~$175/head</span>
+        <p class="opt-desc">Padded seats behind home plate area. All-you-can-eat ballpark food and beer/wine/cocktails included for the whole game. Like a suite without the suite price. Built for a group that wants to settle in and not pull out a wallet for nine innings.</p>
+        <div class="opt-meta">Premium experience · One ticket covers everything</div>
+      </div>
+      <div class="option" data-value="Pepsi Porch">
+        <div class="opt-name">Pepsi Porch (Right Field)</div>
+        <span class="opt-tag orange">Party Section</span><span class="opt-tag">~$45/head</span>
+        <p class="opt-desc">Right-field overhang. The party section. Standing-room rails, beers in hand, prime spot for a home-run ball. More money to spend on dinner and drinks later. Authentic Detroit ballpark.</p>
+        <div class="opt-meta">Group hang vibe · Easy to roam</div>
+      </div>
+      <div class="option" data-value="No preference">
+        <div class="opt-name">"You pick — I trust the math"</div>
+        <span class="opt-tag">Crew Call</span>
+        <p class="opt-desc">You don't care where you sit, you just want everyone there. We'll go with whatever fits the crew's budget best.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title-block">
+        <div class="section-title">Post-Game Play</div>
+        <div class="section-time">~4:30 PM · Punch Bowl Social</div>
+      </div>
+    </div>
+    <p class="section-prompt">Bridge between game and dinner. Already locked in <strong>Punch Bowl Social</strong> as the spot — but how do you want to spend the time there?</p>
+    <button class="clear-link" data-clear="postgame">↺ Clear my picks</button>
+    <div class="options" data-section="postgame">
+      <div class="option" data-value="Bowling tournament">
+        <div class="opt-name">Bowling Tournament</div>
+        <span class="opt-tag orange">Competitive</span>
+        <p class="opt-desc">Reserve lanes, set up brackets, loser buys the next round. Easy to get 15 guys engaged. Trash-talk fuel.</p>
+      </div>
+      <div class="option" data-value="Karaoke room">
+        <div class="opt-name">Private Karaoke Room</div>
+        <span class="opt-tag">Chaos Mode</span>
+        <p class="opt-desc">Lock the crew in a private karaoke room. The kind of memory video that gets played at the wedding reception.</p>
+      </div>
+      <div class="option" data-value="Open floor">
+        <div class="opt-name">Just Open Floor</div>
+        <span class="opt-tag">Loose</span>
+        <p class="opt-desc">No reservation. Roll in, post up at the bar, hit the arcade, ping pong, whatever the energy calls for. Most flexible.</p>
+      </div>
+      <div class="option" data-value="All of the above">
+        <div class="opt-name">All of the Above</div>
+        <span class="opt-tag gold">Maximum Damage</span>
+        <p class="opt-desc">Bowling lanes + a karaoke hour + free roam in between. Most expensive option, biggest experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title-block">
+        <div class="section-title">The Dinner</div>
+        <div class="section-time">7:00 PM · Sullivan's Steakhouse</div>
+      </div>
+    </div>
+    <p class="section-prompt">Sullivan's is locked. Private room for 15. What's your call on the menu format?</p>
+    <button class="clear-link" data-clear="dinner">↺ Clear my picks</button>
+    <div class="options" data-section="dinner">
+      <div class="option" data-value="Family-style preset">
+        <div class="opt-name">Family-Style Preset Menu</div>
+        <span class="opt-tag gold">Smoothest</span>
+        <p class="opt-desc">Pre-selected steaks, sides, apps for the table. No menu fumbling. Easiest to split the check, fastest service. Your steak comes out hot.</p>
+      </div>
+      <div class="option" data-value="Order off menu">
+        <div class="opt-name">Everyone Orders Their Own</div>
+        <span class="opt-tag">Classic</span>
+        <p class="opt-desc">Full menu, everyone picks what they want. Slower, but no compromises. The guy who wants the lamb chops gets the lamb chops.</p>
+      </div>
+      <div class="option" data-value="Curated short list">
+        <div class="opt-name">"Just Order Me a Tomahawk"</div>
+        <span class="opt-tag orange">Big Move</span>
+        <p class="opt-desc">Curated short list — the best 4-5 cuts, top sides, the wine. Less fumbling than full menu, more freedom than family-style.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="star-divider">★ ★ ★</div>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title-block">
+        <div class="section-title">Nightcap</div>
+        <div class="section-time">9:30 PM · Last stop</div>
+      </div>
+    </div>
+    <p class="section-prompt">How do you want to close the night? (We can chain more than one if the crew's still rolling.)</p>
+    <button class="clear-link" data-clear="nightcap">↺ Clear my picks</button>
+    <div class="options" data-section="nightcap">
+      <div class="option" data-value="Kamper's Rooftop">
+        <div class="opt-name">Kamper's Rooftop</div>
+        <span class="opt-tag gold">Skyline</span><span class="opt-tag">Book Tower</span>
+        <p class="opt-desc">Top of the historic Book Tower. Panoramic skyline views, fire pits, craft cocktails. The "we made it" photo of the night gets taken here.</p>
+      </div>
+      <div class="option" data-value="Monarch Club">
+        <div class="opt-name">The Monarch Club</div>
+        <span class="opt-tag gold">Penthouse</span>
+        <p class="opt-desc">Penthouse cocktail lounge. Classier crowd, more wine-list-than-shots. Great if you want to linger over a real conversation, not crank the volume.</p>
+      </div>
+      <div class="option" data-value="La Casa Cigars">
+        <div class="opt-name">La Casa Cigars & Lounge</div>
+        <span class="opt-tag">Cigars + Live Music</span>
+        <p class="opt-desc">Cigars, live music or DJ in the tent, drinks in hand. Loose, loud, late. Perfect if the crew's not done yet.</p>
+      </div>
+      <div class="option" data-value="Hollywood Greektown Casino">
+        <div class="opt-name">Hollywood Greektown Casino</div>
+        <span class="opt-tag orange">Vegas Mode</span>
+        <p class="opt-desc">Walk over to the casino, find a poker table, ride the night out. Open 24 hours so we close it on our terms, not theirs.</p>
+      </div>
+      <div class="option" data-value="Surprise nightcap">
+        <div class="opt-name">"Surprise me — your call"</div>
+        <span class="opt-tag">Trust DK</span>
+        <p class="opt-desc">You're done deciding. I'll read the room and pick the right move.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title-block">
+        <div class="section-title">House Rules</div>
+        <div class="section-time">Anything I missed?</div>
+      </div>
+    </div>
+    <p class="section-prompt">Specific guys you want there. Songs that need to play. Anything off-limits. Surprise you do or don't want. Tell me everything.</p>
+    <textarea class="notes-box" id="notes" placeholder="Example: 'No tequila shots, last time was a disaster' / 'Make sure my brother gives the toast' / 'Surprise me with...'"></textarea>
+  </section>
+
+  <div class="submit-section">
+    <h3>Lock It In, Bash</h3>
+    <p>One tap. Sends your picks to the screen so you can copy & text it back to DK.</p>
+    <button class="submit-btn" onclick="generateSummary()">Submit My Picks →</button>
+  </div>
+
+  <div class="summary" id="summary">
+    <h3>★ Baby Bash's Day Pass ★</h3>
+    <div id="summary-content"></div>
+    <div class="copy-actions">
+      <button class="copy-btn" id="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+      <button class="copy-btn" onclick="textIt()">Text It to DK</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    ★ Built for Baby Bash · By DK · June 6, 2026 ★
+  </div>
+
+</div>
+
+<script>
+  const state = {
+    pregame: { first: null, backup: null },
+    game: { first: null, backup: null },
+    postgame: { first: null, backup: null },
+    dinner: { first: null, backup: null },
+    nightcap: { first: null, backup: null }
+  };
+
+  function renderSection(section) {
+    const cards = document.querySelectorAll(`[data-section="${section}"] .option`);
+    cards.forEach(card => {
+      card.classList.remove('first-pick', 'backup-pick');
+      const v = card.dataset.value;
+      if (state[section].first === v) card.classList.add('first-pick');
+      else if (state[section].backup === v) card.classList.add('backup-pick');
+    });
+  }
+
+  document.querySelectorAll('.option').forEach(card => {
+    card.addEventListener('click', () => {
+      const section = card.parentElement.dataset.section;
+      const value = card.dataset.value;
+      const s = state[section];
+
+      if (s.first === value) {
+        s.first = s.backup;
+        s.backup = null;
+      } else if (s.backup === value) {
+        s.backup = null;
+      } else {
+        if (!s.first) {
+          s.first = value;
+        } else if (!s.backup) {
+          s.backup = value;
+        } else {
+          s.backup = value;
+        }
+      }
+      renderSection(section);
+    });
+  });
+
+  document.querySelectorAll('.clear-link').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const section = btn.dataset.clear;
+      state[section] = { first: null, backup: null };
+      renderSection(section);
+    });
+  });
+
+  function generateSummary() {
+    const sections = [
+      { key: 'pregame', label: 'Pre-Game' },
+      { key: 'game', label: 'Game' },
+      { key: 'postgame', label: 'Post-Game' },
+      { key: 'dinner', label: 'Dinner' },
+      { key: 'nightcap', label: 'Nightcap' }
+    ];
+
+    let content = '';
+    let textVersion = '★ BABY BASH BACHELOR DAY ★\n★ JUNE 6 · DETROIT ★\n\n';
+
+    sections.forEach(s => {
+      const first = state[s.key].first;
+      const backup = state[s.key].backup;
+      let picksHtml = '';
+      let picksText = '';
+
+      if (!first && !backup) {
+        picksHtml = `<div class="pick-line empty">— Bash didn't pick — DK's call —</div>`;
+        picksText = `(no pick — DK's call)`;
+      } else {
+        if (first) {
+          picksHtml += `<div class="pick-line"><span class="badge first">1ST</span>${first}</div>`;
+          picksText += `1st: ${first}`;
+        }
+        if (backup) {
+          picksHtml += `<div class="pick-line second"><span class="badge second">2ND</span>${backup}</div>`;
+          picksText += (picksText ? ` / 2nd: ${backup}` : `2nd: ${backup}`);
+        }
+      }
+
+      content += `<div class="summary-row"><div class="summary-label">${s.label}</div><div class="summary-picks">${picksHtml}</div></div>`;
+      textVersion += `${s.label.toUpperCase()}\n  ${picksText}\n\n`;
+    });
+
+    const notes = document.getElementById('notes').value.trim();
+    if (notes) {
+      const safe = notes.replace(/</g, '&lt;');
+      content += `<div class="summary-row"><div class="summary-label">Notes</div><div class="summary-picks"><div class="pick-line" style="font-weight: 400; font-style: italic;">${safe}</div></div></div>`;
+      textVersion += `NOTES:\n${notes}\n`;
+    }
+
+    document.getElementById('summary-content').innerHTML = content;
+    window._textVersion = textVersion;
+    const summary = document.getElementById('summary');
+    summary.classList.add('show');
+    summary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function copyToClipboard() {
+    if (!window._textVersion) return;
+    navigator.clipboard.writeText(window._textVersion).then(() => {
+      const btn = document.getElementById('copy-btn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  function textIt() {
+    if (!window._textVersion) return;
+    const encoded = encodeURIComponent(window._textVersion);
+    window.location.href = `sms:?body=${encoded}`;
+  }
+</script>
+
+</body>
+</html>
